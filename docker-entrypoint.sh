@@ -9,7 +9,7 @@ fi
 
 if [ "$1" = 'clamd' ]; then
     #Init
-    if [ ! -e /var/lib/clamav/main.cvd ]; then
+    if [ ! -e /var/lib/clamav/main.cvd ] || [ ! -e /var/lib/clamav/daily.cvd ] || [ ! -e /var/lib/clamav/bytecode.cvd ]; then
       echo 'Downloading latest definitions...'
       rm -f /var/lib/clamav/*.cvd
       wget -q -O /var/lib/clamav/main.cvd http://database.clamav.net/main.cvd
