@@ -9,13 +9,13 @@ fi
 
 if [ "$1" = 'clamd' ]; then
     #Init
-    #if [ ! -e /var/lib/clamav/main.cvd ] || [ ! -e /var/lib/clamav/daily.cvd ] || [ ! -e /var/lib/clamav/bytecode.cvd ]; then
-    #  echo 'Downloading latest definitions...'
-    #  rm -f /var/lib/clamav/*.cvd
-    #  wget -U firefox -q -O /var/lib/clamav/main.cvd http://database.clamav.net/main.cvd
-    #  wget -U firefox -q -O /var/lib/clamav/daily.cvd http://database.clamav.net/daily.cvd
-    #  wget -U firefox -q -O /var/lib/clamav/bytecode.cvd http://database.clamav.net/bytecode.cvd
-    #fi
+    if [ ! -e /var/lib/clamav/main.cvd ] || [ ! -e /var/lib/clamav/daily.cvd ] || [ ! -e /var/lib/clamav/bytecode.cvd ]; then
+      echo 'Downloading latest definitions...'
+      rm -f /var/lib/clamav/*.cvd
+      wget -U firefox -q -O /var/lib/clamav/main.cvd http://database.clamav.net/main.cvd
+      wget -U firefox -q -O /var/lib/clamav/daily.cvd http://database.clamav.net/daily.cvd
+      wget -U firefox -q -O /var/lib/clamav/bytecode.cvd http://database.clamav.net/bytecode.cvd
+    fi
 
     #Updater daemon
     freshclam -d &
